@@ -1,0 +1,24 @@
+Plurk.vim
+=======
+
+Install 
+-------
+
+    $ sudo cpan Net::Plurk
+    $ vim-packager build 
+    $ make install
+
+Command
+-------
+
+to open a new window to post plurk, type:
+
+    :NewPlurk
+
+if you have `emoticon.vim` installed, then you should be able to open
+omnicompletion to select emoticons, this will be enabled automatically.
+
+just press `C-x C-o` in insert mode to open omnicompletion window.  each time
+you open the omnicompletion, it generates different emoticons for you.
+
+just type `:wq` to save buffer and post the plurk.
