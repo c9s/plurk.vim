@@ -1,0 +1,17 @@
+#!/usr/bin/env perl
+use Getopt::Long;
+use Net::Plurk;
+
+my $user;
+my $pass;
+my $content;
+GetOptions(
+    "user=s" => \$user,
+    "pass=s" => \$pass,
+    "content=s" => \$content,
+);
+
+my $d = Net::Plurk->new;
+$d->login( $user , $pass );
+my $ret = $d->add_plurk( content => $content );
+print "Posted.";
