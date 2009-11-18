@@ -4,7 +4,7 @@
 " Email:   cornelius.howl@gmail.com
 " Version: 0.1
 
-let g:plurk_emb_perl = 1
+let g:plurk_emb_perl = 0
 
 fun! s:post(file)
   let content = readfile(a:file)
