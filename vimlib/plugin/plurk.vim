@@ -13,6 +13,11 @@ fun! s:post(file)
     let g:plurk_pass = input("pass:")
   endif
 
+  if strlen(g:plurk_user) == 0
+    echo "Skipped."
+    return
+  endif
+
   if g:plurk_emb_perl == 1 && has('perl')
 
 perl << END
@@ -40,7 +45,7 @@ endf
 
 fun! s:new_post_buffer()
   let tmp = tempname()
-  exec '10split' . tmp
+  exec '3split' . tmp
   cal s:init_buffer()
   if exists(':EnableEmoticonOmni')
     :EnableEmoticonOmni
