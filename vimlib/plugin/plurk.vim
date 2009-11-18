@@ -1,4 +1,8 @@
 
+"
+" Author:  Cornelius
+" Email:   cornelius.howl@gmail.com
+" Version: 0.1
 
 let g:plurk_emb_perl = 1
 
