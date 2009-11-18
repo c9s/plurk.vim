@@ -13,6 +13,17 @@ fun! s:post(file)
     let g:plurk_pass = input("pass:")
   endif
 
+  if ! filereadable(a:file)
+    echo "Skipped."
+    return
+  endif
+
+  let c = readfile(a:file)
+  if len(c) < 2
+    echo "Skipped."
+    return
+  endif
+
   if strlen(g:plurk_user) == 0
     echo "Skipped."
     return
@@ -61,6 +72,8 @@ fun! s:init_buffer()
   setlocal nu fdc=0
   setfiletype plurk
   setlocal syntax=plurk
+  let x = '[powered by http://github.com/c9s/plurk.vim (plurk.vim)]'
+  put=x
 endf
 
 com! NewPlurk   :cal s:new_post_buffer()
