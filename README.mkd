@@ -23,4 +23,4 @@ omnicompletion to select emoticons, this will be enabled automatically.
 just press `C-x C-o` in insert mode to open omnicompletion window.  each time
 you open the omnicompletion, it generates different emoticons for you.
 
-just type `:wq` to save buffer and post the plurk.
+just type `:wq` to save buffer to post the plurk.
