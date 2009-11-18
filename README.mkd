@@ -1,6 +1,8 @@
 Plurk.vim
 =======
 
+![](http://cloud.github.com/downloads/c9s/plurk.vim/Screen_shot_2009-11-18_at_4.38.10_PM.png)
+
 Install 
 -------
 
