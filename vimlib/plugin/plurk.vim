@@ -1,5 +1,5 @@
 
-"
+" Plugin:  plurk.vim
 " Author:  Cornelius
 " Email:   cornelius.howl@gmail.com
 " Version: 0.1
@@ -30,13 +30,11 @@ END
   else
     let b = expand('~/.vim/bin/plurk_post')
     let cmd = 'perl ' . b . ' --user=' . g:plurk_user . ' --pass=' . g:plurk_pass . ' --file="' . a:file  . '"'
-    echo cmd
     let ret = system(cmd)
 	if v:shell_error
       echo ret
 	  echo v:shell_error
 	endif
-    sleep 1
   endif
 endf
 
@@ -50,7 +48,7 @@ fun! s:new_post_buffer()
     echo "EmotionOmni Enabled."
   endif
   exec printf('autocmd BufWinLeave <buffer> :cal s:post("%s")',tmp)
-  startinsert
+  "startinsert
 endf
 
 fun! s:init_buffer()
