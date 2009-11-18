@@ -8,8 +8,6 @@ let g:plurk_emb_perl = 0
 
 fun! s:post(file)
 
-  let content = readfile(a:file)
-
   if ! exists('g:plurk_user')
     let g:plurk_user = input("user:")
     let g:plurk_pass = input("pass:")
@@ -31,7 +29,9 @@ perl << END
 END
   else
     let b = expand('~/.vim/bin/plurk_post')
-    let cmd = b . ' --user=' . g:plurk_user . ' --pass=' . g:plurk_pass . ' --content="' . join(content," ") . '"' 
+    let cmd = b . ' --user=' . g:plurk_user . ' --pass=' . g:plurk_pass . ' --file=' . a:file 
+    echo cmd
+    cal system(cmd)
   endif
 endf
 
