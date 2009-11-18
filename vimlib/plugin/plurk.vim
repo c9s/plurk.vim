@@ -72,7 +72,7 @@ fun! s:init_buffer()
   setlocal nu fdc=0
   setfiletype plurk
   setlocal syntax=plurk
-  let x = '[powered by http://github.com/c9s/plurk.vim (plurk.vim)]'
+  let x = '  http://github.com/c9s/plurk.vim (powered by plurk.vim)'
   put=x
 endf
 
