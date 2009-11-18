@@ -29,8 +29,7 @@ perl << END
 END
   else
     let b = expand('~/.vim/bin/plurk_post')
-    let cmd = b . ' --user=' . g:plurk_user . ' --pass=' . g:plurk_pass . ' --file=' . a:file 
-    echo cmd
+    let cmd = 'perl ' . b . ' --user=' . g:plurk_user . ' --pass=' . g:plurk_pass . ' --file=' . a:file 
     cal system(cmd)
   endif
 endf
