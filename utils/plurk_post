@@ -5,11 +5,21 @@ use Net::Plurk;
 my $user;
 my $pass;
 my $content;
+my $file;
 GetOptions(
     "user=s" => \$user,
     "pass=s" => \$pass,
     "content=s" => \$content,
+    "file=s" => $file,
 );
+
+if ( -e $file )
+{
+    local $/;
+    open FH,"<", $file;
+    $content = <FH>;
+    close FH;
+}
 
 my $d = Net::Plurk->new;
 $d->login( $user , $pass );
