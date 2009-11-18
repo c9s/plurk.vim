@@ -12,7 +12,7 @@ GetOptions(
     "user=s" => \$user,
     "pass=s" => \$pass,
     "content=s" => \$content,
-    "file=s" => $file,
+    "file=s" => \$file,
 );
 
 if ( -e $file )

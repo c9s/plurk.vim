@@ -29,8 +29,14 @@ perl << END
 END
   else
     let b = expand('~/.vim/bin/plurk_post')
-    let cmd = 'perl ' . b . ' --user=' . g:plurk_user . ' --pass=' . g:plurk_pass . ' --file=' . a:file 
-    cal system(cmd)
+    let cmd = 'perl ' . b . ' --user=' . g:plurk_user . ' --pass=' . g:plurk_pass . ' --file="' . a:file  . '"'
+    echo cmd
+    let ret = system(cmd)
+	if v:shell_error
+      echo ret
+	  echo v:shell_error
+	endif
+    sleep 1
   endif
 endf
 
@@ -38,6 +44,11 @@ fun! s:new_post_buffer()
   let tmp = tempname()
   exec '10split' . tmp
   cal s:init_buffer()
+  if exists(':EnableEmoticonOmni')
+    :EnableEmoticonOmni
+    redraw
+    echo "EmotionOmni Enabled."
+  endif
   exec printf('autocmd BufWinLeave <buffer> :cal s:post("%s")',tmp)
   startinsert
 endf
