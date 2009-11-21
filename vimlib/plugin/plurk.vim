@@ -6,6 +6,17 @@
 
 let g:plurk_emb_perl = 0
 
+fun! s:skip_post(file)
+  exec 'bw ' . a:file
+  redraw
+  echo "skipped."
+endf
+
+fun! s:echo(msg)
+  redraw
+  echo a:msg 
+endf
+
 fun! s:post(file)
 
   if ! exists('g:plurk_user')
@@ -14,13 +25,13 @@ fun! s:post(file)
   endif
 
   if ! filereadable(a:file)
-    echo "Skipped."
+    cal s:skip_post()
     return
   endif
 
   let c = readfile(a:file)
   if len(c) < 2
-    echo "Skipped."
+    cal s:skip_post()
     return
   endif
 
@@ -29,6 +40,7 @@ fun! s:post(file)
     return
   endif
 
+  cal s:echo('plurking...')
   if g:plurk_emb_perl == 1 && has('perl')
 
 perl << END
@@ -44,6 +56,7 @@ perl << END
   VIM::Msg("Plurk Posted.")
 END
   else
+
     let b = expand('~/.vim/bin/plurk_post')
     let cmd = 'perl ' . b . ' --user=' . g:plurk_user . ' --pass=' . g:plurk_pass . ' --file="' . a:file  . '"'
     let ret = system(cmd)
@@ -52,6 +65,7 @@ END
 	  echo v:shell_error
 	endif
   endif
+  cal s:echo('done.')
 endf
 
 fun! s:new_post_buffer()
@@ -72,7 +86,7 @@ fun! s:init_buffer()
   setlocal nu fdc=0
   setfiletype plurk
   setlocal syntax=plurk
-  let x = '  http://github.com/c9s/plurk.vim (powered by plurk.vim)'
+  let x = '  http://github.com/c9s/plurk.vim (from plurk.vim)'
   put=x
 endf
 
