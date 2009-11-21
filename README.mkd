@@ -10,6 +10,8 @@ Install
     $ vim-packager build 
     $ make install
 
+or simply copy plugin file into your vim runtime directory.
+
 Command
 -------
 
